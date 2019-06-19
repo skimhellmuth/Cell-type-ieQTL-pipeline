@@ -47,8 +47,7 @@ celltype=B-cells; tissue=Cells_EBV-transformed_lymphocytes;
 The output file contains summary statistics for the interaction term, the genotype and cell type main effects, the eigenMT + Benjamini-Hochberg-corrected pvalues for the interaction term, and gene names and biotypes extracted from Gencode:
 ```
 variant_id	gene_id	gene_name	biotype	phenotype_id	tss_distance	maf	ma_samples	ma_count	pval_g	b_g	b_g_se	pval_i	b_i	b_i_se	pval_gi	b_gi	b_gi_se	pval_emt	tests_emt	pval_adj_bh
-chr1_940390_A_G_b38	ENSG00000227232.5	WASH7P	unprocessed_pseudogene	ENSG00000227232.5	910837	0.476119	475	638	0.497133	0.0285487	0.042019	0.0531376	0.252597	0.130363	9.70041e-05	-0.155152	0.0395342	0.0295863	305	0.259183
-chr1_92750_G_A_b38	ENSG00000238009.6	RP11-34P13.7	lincRNA	ENSG00000238009.6	-36473	0.0701493	94	94	5.51215e-13	0.63642	0.0862951	0.18135	-0.175284	0.130988	4.50128e-05	0.385686	0.0938314	0.0178251	396	0.184471
+chrX_155782529_A_G_b38	ENSG00000124334.17	IL9R	protein_coding	ENSG00000124334.17	-215052	0.113433	144	152	0.623216	-0.031697	0.0644834	0.918422	0.0130624	0.127481	0.00105728	0.196171	0.0596092	0.278065	263	0.940654
 ```
 
 #### 3. Perform colocalization analysis of cell type i-eQTLs and GWAS traits
@@ -58,17 +57,18 @@ We ran colocalization analysis only on significant cell type ieGenes (FDR < 0.05
 ```shell
 mkdir -p example/coloc
 celltype=B-cells; tissue=Cells_EBV-transformed_lymphocytes;
-cat example/${celltype}_ieqtl/eqtls_final/${tissue}_${celltype}_ieqtl.eigenMT.annotated.txt | awk '$21 < 0.05 {print $2}' > example/coloc/phenolist_${tissue}_${celltype}_ieqtl_fdr5.txt
+cat example/${celltype}_ieqtl/eqtls_final/${tissue}_${celltype}_ieqtl.eigenMT.annotated.txt | awk '$21 < 0.05 {print $2}' > example/${celltype}_ieqtl/phenolist_${tissue}_${celltype}_ieqtl_fdr5.txt
 ```
 
 Extract summary statistics of the entire cis-window of significant cell type ieGenes. This script needs about 60-80G of memory.
 ```shell
 celltype=Neutrophils; tissue=Whole_Blood;
+p2f="example/${celltype}_ieqtl"
 python3 extract_parquet2txt.py \
-    -p ${celltype}_ieqtl/${tissue}*.parquet \
-    -s phenolist_${tissue}_${celltype}_ieqtl_fdr5.txt \
+    -p ${p2f}/${tissue}*.parquet \
+    -s ${p2f}/phenolist_${tissue}_${celltype}_ieqtl_fdr5.txt \
     -o ${tissue}_${celltype}_ieqtl_fdr5.txt.gz \
-    -d ${celltype}_ieqtl/subsets/
+    -d ${p2f}
 ```
 
 ##### 3.1 Run coloc
