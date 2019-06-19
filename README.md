@@ -47,7 +47,7 @@ celltype=B-cells; tissue=Cells_EBV-transformed_lymphocytes;
 The output file contains summary statistics for the interaction term, the genotype and cell type main effects, the eigenMT + Benjamini-Hochberg-corrected pvalues for the interaction term, and gene names and biotypes extracted from Gencode:
 ```
 variant_id	gene_id	gene_name	biotype	phenotype_id	tss_distance	maf	ma_samples	ma_count	pval_g	b_g	b_g_se	pval_i	b_i	b_i_se	pval_gi	b_gi	b_gi_se	pval_emt	tests_emt	pval_adj_bh
-chrX_155782529_A_G_b38	ENSG00000124334.17	IL9R	protein_coding	ENSG00000124334.17	-215052	0.113433	144	152	0.623216	-0.031697	0.0644834	0.918422	0.0130624	0.127481	0.00105728	0.196171	0.0596092	0.278065	263	0.940654
+chr1_1075715_A_G_b38	ENSG00000187961.13	KLHL17	protein_coding	ENSG00000187961.13	115128	0.0940299	119	126	0.0436386	0.056653	0.0280206	0.0791713	-0.089065	0.0506479	0.00106786	0.0940563	0.0286051	1	1034	1
 ```
 
 #### 3. Perform colocalization analysis of cell type i-eQTLs and GWAS traits
