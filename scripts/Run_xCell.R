@@ -11,7 +11,7 @@ CELLTYPE <- args[7]
 
 suppressPackageStartupMessages(library(xCell))
 suppressPackageStartupMessages(library(GSEABase))
-source("../Functions.R")
+source("../scripts/Functions.R")
 
 ## read expression bed file, convert ensembl gene id to gene symbol and save file for future use
 # library('biomaRt')
