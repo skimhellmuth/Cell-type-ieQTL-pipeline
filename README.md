@@ -6,7 +6,7 @@
 
 Following dependencies should be installed before running the pipeline:
 - R (>= 3.2.2)
-- Rpackages: xCell, GSEABase, coloc, data.table
+- Rpackages: xCell, GSEABase, coloc, [data.table](https://cran.r-project.org/package=data.table)
 - Python (>= 3.6.4)
 - Python modules: pandas, numpy
 - [tensorqtl](https://github.com/broadinstitute/tensorqtl) for eQTL mapping
